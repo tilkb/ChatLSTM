@@ -36,6 +36,9 @@ def default_parameters():
     # Bucket size:
     parameters['message_length'] = 40
     parameters['chat_length'] = 40
+    #objective parameters
+    parameters['recall_parameter'] = 45
+    parameters['precision_parameter'] = 0.1
 
     return parameters
 

@@ -14,7 +14,7 @@ def f05(y_true, y_pred):
 
 #custom objective to optimize F0.5 measure
 def fmeasure_objective(y_true, y_pred):
-    return K.binary_crossentropy(y_pred,y_true)+(100 * y_true) * K.binary_crossentropy(y_pred,y_true)
+    return K.binary_crossentropy(y_pred,y_true)+(alfa * y_true) * K.binary_crossentropy(y_pred,y_true) + beta * K.log(y_pred) + (alfa * y_true) * beta * K.log (y_pred)
 
 def buildmodel(parameters):
     # build the model from components, with the given parameters,
@@ -97,12 +97,26 @@ def parse():
     parser.add_argument('--chat_length', type=int,
     default = def_params['chat_length'],
               help = "Bucket size(chat length) for messages")
+    #objective parameters
+    parser.add_argument('--recall_parameter', type=int,
+                        default=def_params['recall_parameter'],
+                        help="")
+    # objective parameters
+    parser.add_argument('--precision_parameter', type=int,
+                        default=def_params['precision_parameter'],
+                        help="")
+
+
     args = parser.parse_args()
     return args
 
 
 def main():
     parameters = parse()
+    global alfa
+    alfa = parameters.recall_parameter
+    global beta
+    beta = parameters.precision_parameter
     #load predator data
     print("Loading data...")
     train_data1, train_data2, test_data1, test_data2, train_label, test_label = load_sexual_predator_data(parameters)
