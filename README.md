@@ -30,7 +30,7 @@ Current solution far from the best solutions, F05 score is about 0.27 on test se
 
 h_ is the other LSTM's hidden state
 
-## Hiearchical stucture:
+## Hierarchical stucture:
 Message is vectorized with LSTM.
 Each message pairs' vectors are merged, these vectors are the input of the chatLSTM.
 
