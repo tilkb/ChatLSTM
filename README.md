@@ -2,7 +2,7 @@
 End to end deep learning solution for PAN 2012 predator identification Task 1 (http://pan.webis.de/clef12/pan12-web/author-identification.html)
 Current solution far from the best solutions, F05 score is about 0.27 on test set.
 
-#Topology
+# Topology
 ## Chat LSTM-Cell:
 2 standard LSTM cell and they are "communicating" with each others
 + Input gate:  i<sub>t</sub>=sigm(W<sup>(i)</sup>x<sub>t</sub>+U<sup>(i)</sup>h<sub>t-1</sub>+b<sup>(i)</sup>)
@@ -76,3 +76,6 @@ Best models are saved to tmp folder.
 
 ##Test the saved models
 'python3 test.py filename'
+
+## Requirements
+* Keras 1.3<=...<2.0
